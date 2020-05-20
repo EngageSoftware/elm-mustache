@@ -33,18 +33,18 @@ renderSections : List Node -> String -> String
 renderSections nodes template =
     let
         r =
-            regex "{{#\\s?(.+?)\\s?}}(.+?){{/\\s?\\1\\s?}}"
+            Maybe.withDefault Regex.never <| fromString "{{#\\s?(.+?)\\s?}}(.+?){{/\\s?\\1\\s?}}"
     in
-        replace All r (getSection nodes) template
+    replace r (getSection nodes) template
 
 
 renderVariables : List Node -> String -> String
 renderVariables nodes template =
     let
         r =
-            regex "{{\\s?(.+?)\\s?}}"
+            Maybe.withDefault Regex.never <| fromString "{{\\s?(.+?)\\s?}}"
     in
-        replace All r (getVariable nodes) template
+    replace r (getVariable nodes) template
 
 
 getVariable : List Node -> Match -> String
@@ -58,15 +58,16 @@ getVariable nodes match =
                 Variable key_ val ->
                     if key == key_ then
                         Just val
+
                     else
                         Nothing
 
                 _ ->
                     Nothing
     in
-        List.map getContent nodes
-            |> oneOf
-            |> Maybe.withDefault ""
+    List.map getContent nodes
+        |> oneOf
+        |> Maybe.withDefault ""
 
 
 getSection : List Node -> Match -> String
@@ -85,16 +86,18 @@ getSection nodes match =
                 Section key_ bool ->
                     if key_ == key then
                         bool
+
                     else
                         False
 
                 _ ->
                     False
     in
-        if List.any expand nodes then
-            val
-        else
-            ""
+    if List.any expand nodes then
+        val
+
+    else
+        ""
 
 
 head_ : List (Maybe String) -> String
