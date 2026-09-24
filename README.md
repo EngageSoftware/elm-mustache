@@ -20,6 +20,6 @@ evaluatedTemplate =
     , Mustache.Section "show" True
     ]
     template
-
--- evaluatedTemplate == "Hi, my name is John. Show me!"
+    
+evaluatedTemplate --> "Hi, my name is John. Show me!"
 ```
