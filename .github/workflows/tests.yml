@@ -21,4 +21,4 @@ jobs:
         uses: "pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024" # v3.0.0
 
       - name: "Run Tests"
-        pwsh: "pnpm run test"
+        run: "pnpm run test"
