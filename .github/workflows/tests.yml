@@ -1,4 +1,4 @@
-name: "Run Tests"
+name: "CI"
 on:
   push:
 
@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   tests:
-    name: "Run Tests"
+    name: "Tests and Review"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout"
@@ -20,6 +20,9 @@ jobs:
 
       - name: "Install pnpm and Node.js"
         uses: "pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024" # v3.0.0
+
+      - name: "Review"
+        run: "pnpm run review"
 
       - name: "Run Tests"
         run: "pnpm run test"

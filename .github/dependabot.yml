@@ -9,6 +9,15 @@ updates:
     cooldown:
       default-days: 7
 
+  - package-ecosystem: "elm"
+    directory: "/review"
+    schedule:
+      interval: "daily"
+      time: "07:00"
+      timezone: "America/Chicago"
+    cooldown:
+      default-days: 7
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

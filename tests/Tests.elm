@@ -1,7 +1,6 @@
-module Tests exposing (..)
+module Tests exposing (all)
 
 import Expect
-import Fuzz
 import Mustache
 import Test exposing (..)
 

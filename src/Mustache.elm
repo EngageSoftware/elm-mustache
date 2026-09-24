@@ -6,7 +6,7 @@ module Mustache exposing (Node(..), render)
 
 -}
 
-import Regex exposing (..)
+import Regex exposing (Regex)
 
 
 {-| Represent mustache variables
@@ -14,11 +14,6 @@ import Regex exposing (..)
 type Node
     = Variable String String
     | Section String Bool
-
-
-type Hole
-    = Variable_ String
-    | Section_ String String
 
 
 {-| Render a template using a list of variables
@@ -32,27 +27,33 @@ render nodes template =
 renderSections : List Node -> String -> String
 renderSections nodes template =
     let
+        r : Regex
         r =
-            Maybe.withDefault Regex.never <| fromString "{{#\\s?(.+?)\\s?}}(.+?){{/\\s?\\1\\s?}}"
+            Regex.fromString "{{#\\s?(.+?)\\s?}}(.+?){{/\\s?\\1\\s?}}"
+                |> Maybe.withDefault Regex.never
     in
-    replace r (getSection nodes) template
+    Regex.replace r (getSection nodes) template
 
 
 renderVariables : List Node -> String -> String
 renderVariables nodes template =
     let
+        r : Regex
         r =
-            Maybe.withDefault Regex.never <| fromString "{{\\s?(.+?)\\s?}}"
+            Regex.fromString "{{\\s?(.+?)\\s?}}"
+                |> Maybe.withDefault Regex.never
     in
-    replace r (getVariable nodes) template
+    Regex.replace r (getVariable nodes) template
 
 
-getVariable : List Node -> Match -> String
+getVariable : List Node -> Regex.Match -> String
 getVariable nodes match =
     let
+        key : String
         key =
             head_ match.submatches
 
+        getContent : Node -> Maybe String
         getContent node =
             case node of
                 Variable key_ val ->
@@ -70,17 +71,20 @@ getVariable nodes match =
         |> Maybe.withDefault ""
 
 
-getSection : List Node -> Match -> String
+getSection : List Node -> Regex.Match -> String
 getSection nodes match =
     let
+        key : String
         key =
             head_ match.submatches
 
+        val : String
         val =
             List.tail match.submatches
                 |> Maybe.withDefault []
                 |> head_
 
+        expand : Node -> Bool
         expand node =
             case node of
                 Section key_ bool ->
