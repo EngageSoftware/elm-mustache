@@ -1,7 +1,7 @@
 module Tests exposing (..)
 
 import Expect
-import Fuzz exposing (int, list, string, tuple)
+import Fuzz
 import Mustache
 import Test exposing (..)
 

@@ -2,16 +2,13 @@
   "name": "elm-mustache",
   "version": "1.0.3",
   "description": "Evaluating mustache templates",
-  "dependencies": {
-    "elm-test": "^0.18.2"
-  },
-  "devDependencies": {},
   "license": "MIT",
+  "private": true,
   "scripts": {
     "test": "elm-test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/truqu/elm-mustache.git"
+  "devDependencies": {
+    "elm": "^0.19.2-0",
+    "elm-test": "^0.19.2-1"
   }
 }
