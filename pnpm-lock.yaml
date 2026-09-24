@@ -1,0 +1,553 @@
+---
+lockfileVersion: '9.0'
+
+importers:
+
+  .:
+    configDependencies: {}
+    packageManagerDependencies:
+      pnpm:
+        specifier: 12.6.0
+        version: 12.6.0
+
+packages:
+
+  '@pnpm/exe.android-arm64@12.6.0':
+    resolution: {integrity: sha512-kviIHft9h02q+7N2In7tSL9T/HRUSGwYmU74YPtsWU5ee7vgqPyC0JT6RRX6miW+NxX1CvHgQxg69qq1qTLJYQ==}
+    cpu: [arm64]
+    os: [android]
+
+  '@pnpm/exe.android-x64@12.6.0':
+    resolution: {integrity: sha512-CT8aJKLq2mtZFE71pr4E5Z2xHL8uGnRGr+NclDqsXlVF4SVcQ2QAs14mWi0C8gjT4hbmi+Q0lJRRIkMAWfjjng==}
+    cpu: [x64]
+    os: [android]
+
+  '@pnpm/exe.darwin-arm64@12.6.0':
+    resolution: {integrity: sha512-rafpVkjzugKBMxSvGQd5wK1x5eOTkD/+lcJIFHeQhvd+BJ8kDisOOvwhQDrpGd4vd2Fx+hhW0P2Ptt638OlhFg==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@pnpm/exe.darwin-x64@12.6.0':
+    resolution: {integrity: sha512-72Jpuv1m24gI8zUNcaylYpBWEhBzz1VPhnDIU2GYM2eRP+KsOqVLwV78i+JrihI39zY2NNXmaN4eAKX1inpaDQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@pnpm/exe.freebsd-x64@12.6.0':
+    resolution: {integrity: sha512-LON4QgNy1w/XF4uySZIyC/5hEB0oGdelXsY9tSKqstER+2j2X2oHz67skD11RRd/HWFRtMr64shQZ4I9ZoZ0zg==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@pnpm/exe.linux-arm64-musl@12.6.0':
+    resolution: {integrity: sha512-BdDpX+DeaMUc5x6WNcE6FkmFy36NwrBbBvwsZU737Zt3u1fTY+iKFPchjEQNCM4rT6q6xvF2oN3ZwExGsJCkxQ==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/exe.linux-arm64@12.6.0':
+    resolution: {integrity: sha512-8h2sNoIhHDpHDYqZZCh9PXr6krqW10btb0GHVGuw710muDHlFAHMtUG2ogmaHge6zJG1xgY4Y7mwX5g/LWvrYg==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-ppc64@12.6.0':
+    resolution: {integrity: sha512-ld6xgcEhFCFrsVsJhbmdmR714PnsEspO/Ij8w0/D7OSiz2hYGu3fZd5tKRxOI5m6H6Gl0/RRFAPncTHbsgXVjQ==}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-riscv64@12.6.0':
+    resolution: {integrity: sha512-HIbImydoC3J8NFt+8MXfhTCf5rO6NjCMyinSAHac0VmV8uCHw+kbQkyAzxV84rzz9ZOzmBOnj0b1N461UIYGsw==}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-s390x@12.6.0':
+    resolution: {integrity: sha512-DjSqT7+BZ/lWcDHwNMuzsRVfyxUimh+D54Xw4tSWbdVVQhtWtNMUyI93LVnwCmsoEpar2gC3SFeAgywx37svKQ==}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-x64-musl@12.6.0':
+    resolution: {integrity: sha512-31lKeGPmRE6xfV6I3VjaEGVFRei14pl/zgoFDK4w+UkbJqOuNl2Ht3O1GuqNIg3Gl14qTEb4kZRAYFHXifDx9A==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/exe.linux-x64@12.6.0':
+    resolution: {integrity: sha512-qFWBneHJAJ73W4whtbaFOL1M/7DBC6ILHXuxc7ZPtEhfPuT1zeZiGrmKHoMAfJA+mcm6xhOFljqVTUS+00Jabw==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.win32-arm64@12.6.0':
+    resolution: {integrity: sha512-OhfefXEEykZlslSUhR8PPRe6MVPV3Oink/dVfIecE5velpc7j80cZYsHlaDrtRDcm3TPwQHkaRW1SJ1efX9oFg==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@pnpm/exe.win32-x64@12.6.0':
+    resolution: {integrity: sha512-L2tuyrD2+Imgxs3VK/ST/2L3xD6vDP0ktJQxM0TaGw7TbAQEMq+RMc8iK6Ew7Id579uzjJe8jSfJID2ZGsOHCA==}
+    cpu: [x64]
+    os: [win32]
+
+  pnpm@12.6.0:
+    resolution: {integrity: sha512-PvaPlRyxEawgS0paFvCy3fDaVqluBBPoHYVdnwtV75JnFHCQKOHNAMQFwsX7e56OxNxGd3yAXQNzwvL/AP0g7A==}
+    engines: {node: '>=18.*'}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe.android-arm64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.android-x64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.darwin-arm64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.darwin-x64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.freebsd-x64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-arm64-musl@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-arm64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-ppc64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-riscv64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-s390x@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-x64-musl@12.6.0':
+    optional: true
+
+  '@pnpm/exe.linux-x64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.win32-arm64@12.6.0':
+    optional: true
+
+  '@pnpm/exe.win32-x64@12.6.0':
+    optional: true
+
+  pnpm@12.6.0:
+    optionalDependencies:
+      '@pnpm/exe.android-arm64': 12.6.0
+      '@pnpm/exe.android-x64': 12.6.0
+      '@pnpm/exe.darwin-arm64': 12.6.0
+      '@pnpm/exe.darwin-x64': 12.6.0
+      '@pnpm/exe.freebsd-x64': 12.6.0
+      '@pnpm/exe.linux-arm64': 12.6.0
+      '@pnpm/exe.linux-arm64-musl': 12.6.0
+      '@pnpm/exe.linux-ppc64': 12.6.0
+      '@pnpm/exe.linux-riscv64': 12.6.0
+      '@pnpm/exe.linux-s390x': 12.6.0
+      '@pnpm/exe.linux-x64': 12.6.0
+      '@pnpm/exe.linux-x64-musl': 12.6.0
+      '@pnpm/exe.win32-arm64': 12.6.0
+      '@pnpm/exe.win32-x64': 12.6.0
+
+---
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    devDependencies:
+      elm:
+        specifier: ^0.19.2-0
+        version: 0.19.2-0
+      elm-test:
+        specifier: ^0.19.2-1
+        version: 0.19.2-1
+      node:
+        specifier: runtime:^26.10.0
+        version: runtime:26.10.0
+
+packages:
+
+  '@elm_binaries/darwin_arm64@0.19.2-0':
+    resolution: {integrity: sha512-vhgvWAgc+jkB/oSCqI0BK1w908ivNbV6OBWIGtJgbzAXFh6RYLcGdE04+X6CTLgj+u5ufl81lsnMG6lWEMzbJg==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@elm_binaries/darwin_x64@0.19.2-0':
+    resolution: {integrity: sha512-CQub4GhTa9nOHkUpi4eVGy34mxhfQOpVteLWkgsFwSHxXathKzNaOR9W7nVHR1iKEMBNcYJpXS2MoQognOUMkA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@elm_binaries/linux_arm64@0.19.2-0':
+    resolution: {integrity: sha512-50LdOV2ddvgBqcgfVKC3yCKg3/3RQdkfE7Be5k7Zj2xYLALQolk3X2ualXUmXIbP6Zo1xYKymDAfa/M1PTF+dw==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@elm_binaries/linux_x64@0.19.2-0':
+    resolution: {integrity: sha512-03EXHZZBCEFcKKh2kKUGPsFysKXnHANYw2XubBwT3Vj/5uOI/doG0g8kij5ng8n50vma/pNwAWqvVQLSRDmPMA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@elm_binaries/win32_x64@0.19.2-0':
+    resolution: {integrity: sha512-FCzv6KAlo/L2/FZe3rsIH5dgFfljlgKWpMUDxVgNm1mFKep4TeFEnwRlSUh7hFnKCDVyjUL9oNL+x4OwYr3KWg==}
+    cpu: [x64]
+    os: [win32]
+
+  anymatch@3.1.3:
+    resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
+    engines: {node: '>= 8'}
+
+  binary-extensions@2.3.0:
+    resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
+    engines: {node: '>=8'}
+
+  braces@3.0.3:
+    resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
+    engines: {node: '>=8'}
+
+  chokidar@3.6.0:
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
+    engines: {node: '>= 8.10.0'}
+
+  commander@9.5.0:
+    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
+    engines: {node: ^12.20.0 || >=14}
+
+  elm-solve-deps-wasm@2.0.0:
+    resolution: {integrity: sha512-11OV8FgB9qsth/F94q2SJjb1MoEgbworSyNM1L+YlxVoaxp7wtWPyA8cNcPEkSoIKG1B8Tqg68ED1P6dVamHSg==}
+
+  elm-test@0.19.2-1:
+    resolution: {integrity: sha512-uJSBUgRpOtDkRDpHm1CZHmv+LTR3FiAILUZcWwSWwZc51lLxlLatUpl8IVr2vscMkvk8DZ0ecvsuvlbzi5iK2Q==}
+    engines: {node: '>=12.20.0'}
+    hasBin: true
+
+  elm@0.19.2-0:
+    resolution: {integrity: sha512-a2N4WJ6ge+cXOemAgo6tu8gN17cIzzitYoPcJRpvbiPbay1+BfQAv9wyWtgTyR3YkrduN5oQwzLgSIaUBZwjYQ==}
+    engines: {node: '>=7.0.0'}
+    hasBin: true
+
+  fdir@6.5.0:
+    resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+
+  fill-range@7.1.1:
+    resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
+    engines: {node: '>=8'}
+
+  fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
+  glob-parent@5.1.2:
+    resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
+    engines: {node: '>= 6'}
+
+  is-binary-path@2.1.0:
+    resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
+    engines: {node: '>=8'}
+
+  is-extglob@2.1.1:
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
+    engines: {node: '>=0.10.0'}
+
+  is-glob@4.0.3:
+    resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
+    engines: {node: '>=0.10.0'}
+
+  is-number@7.0.0:
+    resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
+    engines: {node: '>=0.12.0'}
+
+  isexe@2.0.0:
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  node@runtime:26.10.0:
+    resolution:
+      type: variations
+      variants:
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-9ak/5zz1WDQU1Ni+WYxOx+cr4ygbWCDUlcKhXOaqE8g=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-aix-ppc64.tar.gz
+          targets:
+            - cpu: ppc64
+              os: aix
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-dR/fdDnxFdh+4qjz8YwGW2FRhSBo4+ZmrGCsKZb3Wsk=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-darwin-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-676aubWK1rtUOQ1uLIYsGvp9RHX7foroFGrN4hG/cN8=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-darwin-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: darwin
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-QjpBv/jiovoV5wL+/ikZ75WCOyN4dE2sy4Q5MCU0tE8=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-arm64.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-DMa5qZBiFvjefXAUYDj+a6tffo86itKdjb6r3xOBtS0=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-ppc64le.tar.gz
+          targets:
+            - cpu: ppc64le
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-eHQCtH8Pj9RioZpEw9cHBSyryV7LlG/oBBobXIEOPWM=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-s390x.tar.gz
+          targets:
+            - cpu: s390x
+              os: linux
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-G99gyBQeUVJgS6+LOPMeGRs3lPYPzitxNR54xAIfAWY=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-x64-musl.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+              libc: musl
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-y1yc6cgNe4gh46JYVDxxuTkTjPF8dNXMRLvoXW28Wtg=
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-x64.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-t3hkDXJxVmvKqWeZEs3waEwT6CTBFOQai2lvsUr3p6o=
+            prefix: node-v26.10.0-win-arm64
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-win-arm64.zip
+          targets:
+            - cpu: arm64
+              os: win32
+        - resolution:
+            archive: zip
+            bin:
+              node: node.exe
+            integrity: sha256-n+9+ymdDprkQmJzY54cSN2s5T8ubbh6cRKB5mih/kMU=
+            prefix: node-v26.10.0-win-x64
+            type: binary
+            url: https://nodejs.org/download/release/v26.10.0/node-v26.10.0-win-x64.zip
+          targets:
+            - cpu: x64
+              os: win32
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-0mAnv/MZcFDSorC/oVGxjoN47YGv+iv1CTgE2xWJebY=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-arm64-musl.tar.gz
+          targets:
+            - cpu: arm64
+              os: linux
+              libc: musl
+        - resolution:
+            archive: tarball
+            bin:
+              node: bin/node
+            integrity: sha256-5C2pSCG5Qi63a/Wq9N4Jd+BLoyC4r/YUjYlalLCO4iM=
+            type: binary
+            url: https://unofficial-builds.nodejs.org/download/release/v26.10.0/node-v26.10.0-linux-x64-musl.tar.gz
+          targets:
+            - cpu: x64
+              os: linux
+              libc: musl
+    version: 26.10.0
+    hasBin: true
+
+  normalize-path@3.0.0:
+    resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
+    engines: {node: '>=0.10.0'}
+
+  picomatch@2.3.2:
+    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
+    engines: {node: '>=8.6'}
+
+  picomatch@4.0.7:
+    resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
+    engines: {node: '>=12'}
+
+  readdirp@3.6.0:
+    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
+    engines: {node: '>=8.10.0'}
+
+  tinyglobby@0.2.17:
+    resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
+    engines: {node: '>=12.0.0'}
+
+  to-regex-range@5.0.1:
+    resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
+    engines: {node: '>=8.0'}
+
+  which@2.0.2:
+    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
+    engines: {node: '>= 8'}
+    hasBin: true
+
+snapshots:
+
+  '@elm_binaries/darwin_arm64@0.19.2-0':
+    optional: true
+
+  '@elm_binaries/darwin_x64@0.19.2-0':
+    optional: true
+
+  '@elm_binaries/linux_arm64@0.19.2-0':
+    optional: true
+
+  '@elm_binaries/linux_x64@0.19.2-0':
+    optional: true
+
+  '@elm_binaries/win32_x64@0.19.2-0':
+    optional: true
+
+  anymatch@3.1.3:
+    dependencies:
+      normalize-path: 3.0.0
+      picomatch: 2.3.2
+
+  binary-extensions@2.3.0: {}
+
+  braces@3.0.3:
+    dependencies:
+      fill-range: 7.1.1
+
+  chokidar@3.6.0:
+    dependencies:
+      anymatch: 3.1.3
+      braces: 3.0.3
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.3
+
+  commander@9.5.0: {}
+
+  elm-solve-deps-wasm@2.0.0: {}
+
+  elm-test@0.19.2-1:
+    dependencies:
+      chokidar: 3.6.0
+      commander: 9.5.0
+      elm-solve-deps-wasm: 2.0.0
+      tinyglobby: 0.2.17
+      which: 2.0.2
+
+  elm@0.19.2-0:
+    optionalDependencies:
+      '@elm_binaries/darwin_arm64': 0.19.2-0
+      '@elm_binaries/darwin_x64': 0.19.2-0
+      '@elm_binaries/linux_arm64': 0.19.2-0
+      '@elm_binaries/linux_x64': 0.19.2-0
+      '@elm_binaries/win32_x64': 0.19.2-0
+
+  fdir@6.5.0(picomatch@4.0.7):
+    optionalDependencies:
+      picomatch: 4.0.7
+
+  fill-range@7.1.1:
+    dependencies:
+      to-regex-range: 5.0.1
+
+  fsevents@2.3.3:
+    optional: true
+
+  glob-parent@5.1.2:
+    dependencies:
+      is-glob: 4.0.3
+
+  is-binary-path@2.1.0:
+    dependencies:
+      binary-extensions: 2.3.0
+
+  is-extglob@2.1.1: {}
+
+  is-glob@4.0.3:
+    dependencies:
+      is-extglob: 2.1.1
+
+  is-number@7.0.0: {}
+
+  isexe@2.0.0: {}
+
+  node@runtime:26.10.0: {}
+
+  normalize-path@3.0.0: {}
+
+  picomatch@2.3.2: {}
+
+  picomatch@4.0.7: {}
+
+  readdirp@3.6.0:
+    dependencies:
+      picomatch: 2.3.2
+
+  tinyglobby@0.2.17:
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.7)
+      picomatch: 4.0.7
+
+  to-regex-range@5.0.1:
+    dependencies:
+      is-number: 7.0.0
+
+  which@2.0.2:
+    dependencies:
+      isexe: 2.0.0
