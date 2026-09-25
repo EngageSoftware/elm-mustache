@@ -117,75 +117,75 @@ all =
         ]
 
 
-notYetSupported : Test
-notYetSupported =
-    describe "Sections"
-        [ test "Doubled (with proper whitespace handling)" <|
-            \_ ->
-                Mustache.render [ Mustache.Section "bool" True, Mustache.Variable "two" "second" ]
-                    """
-                                                           {{#bool}}
-                                                           * first
-                                                           {{/bool}}
-                                                           * {{two}}
-                                                           {{#bool}}
-                                                           * third
-                                                           {{/bool}}
-                                                       """
-                    |> Expect.equal
-                        """
-                                                           * first
-                                                           * second
-                                                           * third
-                                                       """
-        , describe "Whitespace Sensitivity"
-            [ test "Standalone Lines" <|
-                \_ ->
-                    Mustache.render [ Mustache.Section "boolean" True ]
-                        """| This Is
-{{#boolean}}
-|
-{{/boolean}}
-| A Line"""
-                        |> Expect.equal
-                            """| This Is
-|
-| A Line"""
-            , test "Indented Standalone Lines" <|
-                \_ ->
-                    Mustache.render [ Mustache.Section "boolean" True ]
-                        """| This Is
-  {{#boolean}}
-|
-  {{/boolean}}
-| A Line"""
-                        |> Expect.equal
-                            """| This Is
-|
-| A Line"""
-            , test "Standalone Line Endings" <|
-                \_ ->
-                    Mustache.render [ Mustache.Section "boolean" True ]
-                        "|\u{000D}\n{{#boolean}}\u{000D}\n{{/boolean}}\u{000D}\n|"
-                        |> Expect.equal
-                            "|\u{000D}\n|"
-            , test "Standalone Without Previous Line" <|
-                \_ ->
-                    Mustache.render [ Mustache.Section "boolean" True ]
-                        "  {{#boolean}}\n#{{/boolean}}\n/"
-                        |> Expect.equal
-                            "#\n/"
-            , test "Standalone Without Newline" <|
-                \_ ->
-                    Mustache.render [ Mustache.Section "boolean" True ]
-                        "#{{#boolean}}\n/\n  {{/boolean}}"
-                        |> Expect.equal
-                            "#\n/\n"
-            ]
-        ]
 
-
-
+{-
+   notYetSupported : Test
+   notYetSupported =
+       describe "Sections"
+           [ test "Doubled (with proper whitespace handling)" <|
+               \_ ->
+                   Mustache.render [ Mustache.Section "bool" True, Mustache.Variable "two" "second" ]
+                       """
+                                                              {{#bool}}
+                                                              * first
+                                                              {{/bool}}
+                                                              * {{two}}
+                                                              {{#bool}}
+                                                              * third
+                                                              {{/bool}}
+                                                          """
+                       |> Expect.equal
+                           """
+                                                              * first
+                                                              * second
+                                                              * third
+                                                          """
+           , describe "Whitespace Sensitivity"
+               [ test "Standalone Lines" <|
+                   \_ ->
+                       Mustache.render [ Mustache.Section "boolean" True ]
+                           """| This Is
+   {{#boolean}}
+   |
+   {{/boolean}}
+   | A Line"""
+                           |> Expect.equal
+                               """| This Is
+   |
+   | A Line"""
+               , test "Indented Standalone Lines" <|
+                   \_ ->
+                       Mustache.render [ Mustache.Section "boolean" True ]
+                           """| This Is
+     {{#boolean}}
+   |
+     {{/boolean}}
+   | A Line"""
+                           |> Expect.equal
+                               """| This Is
+   |
+   | A Line"""
+               , test "Standalone Line Endings" <|
+                   \_ ->
+                       Mustache.render [ Mustache.Section "boolean" True ]
+                           "|\u{000D}\n{{#boolean}}\u{000D}\n{{/boolean}}\u{000D}\n|"
+                           |> Expect.equal
+                               "|\u{000D}\n|"
+               , test "Standalone Without Previous Line" <|
+                   \_ ->
+                       Mustache.render [ Mustache.Section "boolean" True ]
+                           "  {{#boolean}}\n#{{/boolean}}\n/"
+                           |> Expect.equal
+                               "#\n/"
+               , test "Standalone Without Newline" <|
+                   \_ ->
+                       Mustache.render [ Mustache.Section "boolean" True ]
+                           "#{{#boolean}}\n/\n  {{/boolean}}"
+                           |> Expect.equal
+                               "#\n/\n"
+               ]
+           ]
+-}
 {-
 
     - name: Null is falsey

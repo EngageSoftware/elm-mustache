@@ -39,67 +39,70 @@ all =
         ]
 
 
-notYetSupported : Test
-notYetSupported =
-    describe "Multiline comments"
-        [ test "Multiline" <|
-            \_ ->
-                Mustache.render []
-                    """12345{{!
-    This is a
-    multi-line comment...
-}}67890"""
-                    |> Expect.equal "1234567890"
-        , test "Standalone" <|
-            \_ ->
-                Mustache.render []
-                    """Begin.
-{{! Comment Block! }}
-End."""
-                    |> Expect.equal
-                        """Begin.
-End."""
-        , test "Indented Standalone" <|
-            \_ ->
-                Mustache.render []
-                    """Begin.
-    {{! Indented Comment Block! }}
-End."""
-                    |> Expect.equal
-                        """Begin.
-End."""
-        , test "Standalone Line Endings" <|
-            \_ ->
-                Mustache.render [] "|\u{000D}\n{{! Standalone Comment }}\u{000D}\n|"
-                    |> Expect.equal "|\u{000D}\n|"
-        , test "Standalone Without Previous Line" <|
-            \_ ->
-                Mustache.render [] "  {{! I'm Still Standalone }}\n!"
-                    |> Expect.equal "!"
-        , test "Standalone Without Newline" <|
-            \_ ->
-                Mustache.render [] "!\n  {{! I'm Still Standalone }}"
-                    |> Expect.equal "!\n"
-        , test "Multiline Standalone" <|
-            \_ ->
-                Mustache.render []
-                    """Begin.
-{{!
-Something's going on here...
-}}
-End."""
-                    |> Expect.equal
-                        """Begin.
-End."""
-        , test "Indented Multiline Standalone" <|
-            \_ ->
-                Mustache.render []
-                    """Begin.
-  {{!
-    Something's going on here...
-  }}
-End."""
-                    |> Expect.equal
-                        """Begin.
-End."""
-        ]
+
+{-
+   notYetSupported : Test
+   notYetSupported =
+       describe "Multiline comments"
+           [ test "Multiline" <|
+               \_ ->
+                   Mustache.render []
+                       """12345{{!
+       This is a
+       multi-line comment...
+   }}67890"""
+                       |> Expect.equal "1234567890"
+           , test "Standalone" <|
+               \_ ->
+                   Mustache.render []
+                       """Begin.
+   {{! Comment Block! }}
+   End."""
+                       |> Expect.equal
+                           """Begin.
+   End."""
+           , test "Indented Standalone" <|
+               \_ ->
+                   Mustache.render []
+                       """Begin.
+       {{! Indented Comment Block! }}
+   End."""
+                       |> Expect.equal
+                           """Begin.
+   End."""
+           , test "Standalone Line Endings" <|
+               \_ ->
+                   Mustache.render [] "|\u{000D}\n{{! Standalone Comment }}\u{000D}\n|"
+                       |> Expect.equal "|\u{000D}\n|"
+           , test "Standalone Without Previous Line" <|
+               \_ ->
+                   Mustache.render [] "  {{! I'm Still Standalone }}\n!"
+                       |> Expect.equal "!"
+           , test "Standalone Without Newline" <|
+               \_ ->
+                   Mustache.render [] "!\n  {{! I'm Still Standalone }}"
+                       |> Expect.equal "!\n"
+           , test "Multiline Standalone" <|
+               \_ ->
+                   Mustache.render []
+                       """Begin.
+   {{!
+   Something's going on here...
+   }}
+   End."""
+                       |> Expect.equal
+                           """Begin.
+   End."""
+           , test "Indented Multiline Standalone" <|
+               \_ ->
+                   Mustache.render []
+                       """Begin.
+     {{!
+       Something's going on here...
+     }}
+   End."""
+                       |> Expect.equal
+                           """Begin.
+   End."""
+           ]
+-}
