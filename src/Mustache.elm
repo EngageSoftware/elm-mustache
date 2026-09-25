@@ -76,44 +76,36 @@ render nodes template =
                     (\syntaxNode result ->
                         case syntaxNode of
                             TextNode _ nodeText ->
-                                if result.skipUntilSectionClosed == Nothing then
+                                if List.all (\isShown -> isShown) result.openSections then
                                     { result | renderedTemplate = result.renderedTemplate ++ nodeText }
 
                                 else
                                     result
 
                             UnescapedVariableNode variableName ->
-                                if result.skipUntilSectionClosed == Nothing then
+                                if List.all (\isShown -> isShown) result.openSections then
                                     { result | renderedTemplate = result.renderedTemplate ++ getValue variableName }
 
                                 else
                                     result
 
                             EscapedVariableNode variableName ->
-                                if result.skipUntilSectionClosed == Nothing then
+                                if List.all (\isShown -> isShown) result.openSections then
                                     { result | renderedTemplate = result.renderedTemplate ++ EscapeHtml.escape (getValue variableName) }
 
                                 else
                                     result
 
                             OpenSectionNode sectionName ->
-                                if showSection sectionName then
-                                    result
+                                { result | openSections = showSection sectionName :: result.openSections }
 
-                                else
-                                    { result | skipUntilSectionClosed = Just sectionName }
-
-                            CloseSectionNode sectionName ->
-                                if result.skipUntilSectionClosed == Just sectionName then
-                                    { result | skipUntilSectionClosed = Nothing }
-
-                                else
-                                    result
+                            CloseSectionNode _ ->
+                                { result | openSections = List.tail result.openSections |> Maybe.withDefault [] }
 
                             CommentNode ->
                                 result
                     )
-                    { renderedTemplate = "", skipUntilSectionClosed = Nothing }
+                    { renderedTemplate = "", openSections = [] }
             ).renderedTemplate
 
         Err _ ->
