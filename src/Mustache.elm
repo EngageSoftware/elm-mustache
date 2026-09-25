@@ -6,6 +6,7 @@ module Mustache exposing (Node(..), render)
 
 -}
 
+import EscapeHtml
 import Parser exposing ((|.), (|=), Parser)
 
 
@@ -18,7 +19,8 @@ type Node
 
 type SyntaxNode
     = TextNode Int String
-    | VariableNode String
+    | EscapedVariableNode String
+    | UnescapedVariableNode String
     | CommentNode
     | OpenSectionNode String
     | CloseSectionNode String
@@ -80,9 +82,16 @@ render nodes template =
                                 else
                                     result
 
-                            VariableNode variableName ->
+                            UnescapedVariableNode variableName ->
                                 if result.skipUntilSectionClosed == Nothing then
                                     { result | renderedTemplate = result.renderedTemplate ++ getValue variableName }
+
+                                else
+                                    result
+
+                            EscapedVariableNode variableName ->
+                                if result.skipUntilSectionClosed == Nothing then
+                                    { result | renderedTemplate = result.renderedTemplate ++ EscapeHtml.escape (getValue variableName) }
 
                                 else
                                     result
@@ -126,7 +135,7 @@ mustacheParser =
                             Parser.Loop (node :: nodes)
                     )
                     |= Parser.getOffset
-                    |= Parser.oneOf [ openSectionParser, closeSectionParser, commentParser, variableParser, textParser ]
+                    |= Parser.oneOf [ openSectionParser, closeSectionParser, commentParser, unescapedVariableParser, ampersandVariableParser, escapedVariableParser, textParser ]
                 ]
 
         getOffset : SyntaxNode -> Int
@@ -154,13 +163,31 @@ textParser =
         |= stringParser
 
 
-variableParser : Parser SyntaxNode
-variableParser =
-    Parser.succeed VariableNode
+escapedVariableParser : Parser SyntaxNode
+escapedVariableParser =
+    Parser.succeed EscapedVariableNode
         |. Parser.symbol "{{"
         |. Parser.spaces
         |= nameParser
         |. Parser.symbol "}}"
+
+
+ampersandVariableParser : Parser SyntaxNode
+ampersandVariableParser =
+    Parser.succeed UnescapedVariableNode
+        |. Parser.symbol "{{&"
+        |. Parser.spaces
+        |= nameParser
+        |. Parser.symbol "}}"
+
+
+unescapedVariableParser : Parser SyntaxNode
+unescapedVariableParser =
+    Parser.succeed UnescapedVariableNode
+        |. Parser.symbol "{{{"
+        |. Parser.spaces
+        |= nameParser
+        |. Parser.symbol "}}}"
 
 
 commentParser : Parser SyntaxNode
