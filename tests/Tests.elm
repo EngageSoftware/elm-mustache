@@ -17,45 +17,45 @@ render =
         [ test "Variable" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "name" "John" ] "My name is {{ name }}."
-                    |> Expect.equal "My name is John."
+                    |> Expect.equal (Just "My name is John.")
         , test "Variable without spaces" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "name" "John" ] "My name is {{name}}."
-                    |> Expect.equal "My name is John."
+                    |> Expect.equal (Just "My name is John.")
         , test "Undefined variable does not render" <|
             \_ ->
                 Mustache.render [] "My name is {{name}}."
-                    |> Expect.equal "My name is ."
+                    |> Expect.equal (Just "My name is .")
         , test "Section" <|
             \_ ->
                 Mustache.render [ Mustache.Section "show" True ] "Hello{{# show }}, world.{{/ show }}"
-                    |> Expect.equal "Hello, world."
+                    |> Expect.equal (Just "Hello, world.")
         , test "Section without spaces" <|
             \_ ->
                 Mustache.render [ Mustache.Section "show" True ] "Hello{{#show}}, world.{{/show}}"
-                    |> Expect.equal "Hello, world."
+                    |> Expect.equal (Just "Hello, world.")
         , test "Section with spaces in section name" <|
             \_ ->
                 Mustache.render [ Mustache.Section "if show" True ] "Hello{{#if show}}, world.{{/if show}}"
-                    |> Expect.equal "Hello, world."
+                    |> Expect.equal (Just "Hello, world.")
         , test "Hide section" <|
             \_ ->
                 Mustache.render [ Mustache.Section "show" False ] "Hello{{# show }}, world.{{/ show }}"
-                    |> Expect.equal "Hello"
+                    |> Expect.equal (Just "Hello")
         , test "Undefined section does not render" <|
             \_ ->
                 Mustache.render [] "Hello{{# show }}, world.{{/ show }}"
-                    |> Expect.equal "Hello"
+                    |> Expect.equal (Just "Hello")
         , test "Hide nested section" <|
             \_ ->
                 Mustache.render [ Mustache.Section "outer" True, Mustache.Section "inner" False ] "{{# outer }}Hello{{#inner}}, world{{/ inner }}{{/outer}}!"
-                    |> Expect.equal "Hello!"
+                    |> Expect.equal (Just "Hello!")
         , test "Show nested section" <|
             \_ ->
                 Mustache.render [ Mustache.Section "outer" True, Mustache.Section "inner" True ] "{{# outer }}Hello{{#inner}}, world{{/ inner }}{{/outer}}!"
-                    |> Expect.equal "Hello, world!"
+                    |> Expect.equal (Just "Hello, world!")
         , test "Hide outer section" <|
             \_ ->
                 Mustache.render [ Mustache.Section "outer" False, Mustache.Section "inner" True ] "{{# outer }}Hello{{#inner}}, world{{/ inner }}{{/outer}}!"
-                    |> Expect.equal "!"
+                    |> Expect.equal (Just "!")
         ]

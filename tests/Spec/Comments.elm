@@ -21,20 +21,20 @@ all =
             [ test "Inline" <|
                 \_ ->
                     Mustache.render [] "12345{{! Comment Block! }}67890"
-                        |> Expect.equal "1234567890"
+                        |> Expect.equal (Just "1234567890")
             , test "Indented Inline" <|
                 \_ ->
                     Mustache.render [] "  12 {{! 34 }}\n"
-                        |> Expect.equal "  12 \n"
+                        |> Expect.equal (Just "  12 \n")
             , test "Surrounding Whitespace" <|
                 \_ ->
                     Mustache.render [] "12345 {{! Comment Block! }} 67890"
-                        |> Expect.equal "12345  67890"
+                        |> Expect.equal (Just "12345  67890")
             , test "Variable Name Collision" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "! comment" "1", Mustache.Variable "! comment " "2", Mustache.Variable "!comment" "3", Mustache.Variable "comment" "4" ]
                         "comments never show: >{{! comment }}<"
-                        |> Expect.equal "comments never show: ><"
+                        |> Expect.equal (Just "comments never show: ><")
             ]
         ]
 

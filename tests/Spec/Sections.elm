@@ -52,11 +52,11 @@ all =
         [ test "Truthy" <|
             \_ ->
                 Mustache.render [ Mustache.Section "boolean" True ] "\"{{#boolean}}This should be rendered.{{/boolean}}\""
-                    |> Expect.equal "\"This should be rendered.\""
+                    |> Expect.equal (Just "\"This should be rendered.\"")
         , test "Falsey" <|
             \_ ->
                 Mustache.render [ Mustache.Section "boolean" False ] "\"{{#boolean}}This should not be rendered.{{/boolean}}\""
-                    |> Expect.equal "\"\""
+                    |> Expect.equal (Just "\"\"")
         , test "Doubled (without proper whitespace handling)" <|
             \_ ->
                 Mustache.render [ Mustache.Section "bool" True, Mustache.Variable "two" "second" ]
@@ -68,51 +68,51 @@ all =
 * third
 {{/bool}}"""
                     |> Expect.equal
-                        """
+                        (Just """
 * first
 
 * second
 
 * third
-"""
+""")
         , test "Nested (Truthy)" <|
             \_ ->
                 Mustache.render [ Mustache.Section "bool" True ]
                     "| A {{#bool}}B {{#bool}}C{{/bool}} D{{/bool}} E |"
-                    |> Expect.equal "| A B C D E |"
+                    |> Expect.equal (Just "| A B C D E |")
         , test "Nested (Falsey)" <|
             \_ ->
                 Mustache.render [ Mustache.Section "bool" False ]
                     "| A {{#bool}}B {{#bool}}C{{/bool}} D{{/bool}} E |"
-                    |> Expect.equal "| A  E |"
+                    |> Expect.equal (Just "| A  E |")
         , test "Context Misses" <|
             \_ ->
                 Mustache.render []
                     "[{{#missing}}Found key 'missing'!{{/missing}}]"
-                    |> Expect.equal "[]"
+                    |> Expect.equal (Just "[]")
         , describe "Whitespace Sensitivity"
             [ test "Surrounding Whitespace" <|
                 \_ ->
                     Mustache.render [ Mustache.Section "boolean" True ]
                         " | {{#boolean}}\t|\t{{/boolean}} | \n"
-                        |> Expect.equal " | \t|\t | \n"
+                        |> Expect.equal (Just " | \t|\t | \n")
             , test "Internal Whitespace" <|
                 \_ ->
                     Mustache.render [ Mustache.Section "boolean" True ]
                         " | {{#boolean}} {{! Important Whitespace }}\n {{/boolean}} | \n"
-                        |> Expect.equal " |  \n  | \n"
+                        |> Expect.equal (Just " |  \n  | \n")
             , test "Indented Inline Sections" <|
                 \_ ->
                     Mustache.render [ Mustache.Section "boolean" True ]
                         " {{#boolean}}YES{{/boolean}}\n {{#boolean}}GOOD{{/boolean}}\n"
-                        |> Expect.equal " YES\n GOOD\n"
+                        |> Expect.equal (Just " YES\n GOOD\n")
             ]
         , describe "Whitespace Insensitivity"
             [ test "Padding" <|
                 \_ ->
                     Mustache.render [ Mustache.Section "boolean" True ]
                         "|{{# boolean }}={{/ boolean }}|"
-                        |> Expect.equal "|=|"
+                        |> Expect.equal (Just "|=|")
             ]
         ]
 

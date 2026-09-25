@@ -39,84 +39,84 @@ all =
         [ test "No Interpolation" <|
             \_ ->
                 Mustache.render [] "Hello from {Mustache}!"
-                    |> Expect.equal "Hello from {Mustache}!"
+                    |> Expect.equal (Just "Hello from {Mustache}!")
         , test "Basic Interpolation" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "subject" "world" ] "Hello, {{subject}}!"
-                    |> Expect.equal "Hello, world!"
+                    |> Expect.equal (Just "Hello, world!")
         , test "No Re-interpolation" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "template" "{{planet}}", Mustache.Variable "planet" "Earth" ]
                     "{{template}}: {{planet}}"
-                    |> Expect.equal "{{planet}}: Earth"
+                    |> Expect.equal (Just "{{planet}}: Earth")
         , test "HTML Escaping" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "forbidden" "& \" < >" ]
                     "These characters should be HTML escaped: {{forbidden}}"
-                    |> Expect.equal "These characters should be HTML escaped: &amp; &quot; &lt; &gt;"
+                    |> Expect.equal (Just "These characters should be HTML escaped: &amp; &quot; &lt; &gt;")
         , test "Triple Mustache" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "forbidden" "& \" < >" ]
                     "These characters should not be HTML escaped: {{{forbidden}}}"
-                    |> Expect.equal "These characters should not be HTML escaped: & \" < >"
+                    |> Expect.equal (Just "These characters should not be HTML escaped: & \" < >")
         , test "Ampersand" <|
             \_ ->
                 Mustache.render [ Mustache.Variable "forbidden" "& \" < >" ]
                     "These characters should not be HTML escaped: {{&forbidden}}"
-                    |> Expect.equal "These characters should not be HTML escaped: & \" < >"
+                    |> Expect.equal (Just "These characters should not be HTML escaped: & \" < >")
         , describe "Context Misses"
             [ test "Basic Context Miss Interpolation" <|
                 \_ ->
                     Mustache.render [] "I ({{cannot}}) be seen!"
-                        |> Expect.equal "I () be seen!"
+                        |> Expect.equal (Just "I () be seen!")
             , test "Triple Mustache Context Miss Interpolation" <|
                 \_ ->
                     Mustache.render [] "I ({{{cannot}}}) be seen!"
-                        |> Expect.equal "I () be seen!"
+                        |> Expect.equal (Just "I () be seen!")
             , test "Ampersand Context Miss Interpolation" <|
                 \_ ->
                     Mustache.render [] "I ({{&cannot}}) be seen!"
-                        |> Expect.equal "I () be seen!"
+                        |> Expect.equal (Just "I () be seen!")
             ]
         , describe "Whitespace Sensitivity"
             [ test "Interpolation - Surrounding Whitespace" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "| {{string}} |"
-                        |> Expect.equal "| --- |"
+                        |> Expect.equal (Just "| --- |")
             , test "Triple Mustache - Surrounding Whitespace" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "| {{{string}}} |"
-                        |> Expect.equal "| --- |"
+                        |> Expect.equal (Just "| --- |")
             , test "Ampersand - Surrounding Whitespace" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "| {{&string}} |"
-                        |> Expect.equal "| --- |"
+                        |> Expect.equal (Just "| --- |")
             , test "Interpolation - Standalone" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "  {{string}}\n"
-                        |> Expect.equal "  ---\n"
+                        |> Expect.equal (Just "  ---\n")
             , test "Triple Mustache - Standalone" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "  {{{string}}}\n"
-                        |> Expect.equal "  ---\n"
+                        |> Expect.equal (Just "  ---\n")
             , test "Ampersand - Standalone" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "  {{&string}}\n"
-                        |> Expect.equal "  ---\n"
+                        |> Expect.equal (Just "  ---\n")
             ]
         , describe "Whitespace Insensitivity"
             [ test "Interpolation With Padding" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "|{{ string }}|"
-                        |> Expect.equal "|---|"
+                        |> Expect.equal (Just "|---|")
             , test "Triple Mustache With Padding" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "|{{{ string }}}|"
-                        |> Expect.equal "|---|"
+                        |> Expect.equal (Just "|---|")
             , test "Ampersand With Padding" <|
                 \_ ->
                     Mustache.render [ Mustache.Variable "string" "---" ] "|{{& string }}|"
-                        |> Expect.equal "|---|"
+                        |> Expect.equal (Just "|---|")
             ]
         ]
 

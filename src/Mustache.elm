@@ -29,7 +29,7 @@ type SyntaxNode
 
 {-| Render a template using a list of variables
 -}
-render : List Node -> String -> String
+render : List Node -> String -> Maybe String
 render nodes template =
     case Parser.run mustacheParser template of
         Ok syntaxNodes ->
@@ -72,48 +72,49 @@ render nodes template =
                         |> List.head
                         |> Maybe.withDefault False
             in
-            (syntaxNodes
-                |> List.foldl
-                    (\syntaxNode result ->
-                        case syntaxNode of
-                            TextNode _ nodeText ->
-                                if List.all (\isShown -> isShown) result.openSections then
-                                    { result | renderedTemplate = result.renderedTemplate ++ nodeText }
+            Just
+                (syntaxNodes
+                    |> List.foldl
+                        (\syntaxNode result ->
+                            case syntaxNode of
+                                TextNode _ nodeText ->
+                                    if List.all (\isShown -> isShown) result.openSections then
+                                        { result | renderedTemplate = result.renderedTemplate ++ nodeText }
 
-                                else
+                                    else
+                                        result
+
+                                UnescapedVariableNode variableName ->
+                                    if List.all (\isShown -> isShown) result.openSections then
+                                        { result | renderedTemplate = result.renderedTemplate ++ getValue variableName }
+
+                                    else
+                                        result
+
+                                EscapedVariableNode variableName ->
+                                    if List.all (\isShown -> isShown) result.openSections then
+                                        { result | renderedTemplate = result.renderedTemplate ++ EscapeHtml.escape (getValue variableName) }
+
+                                    else
+                                        result
+
+                                OpenSectionNode sectionName ->
+                                    { result | openSections = showSection sectionName :: result.openSections }
+
+                                OpenInvertedSectionNode sectionName ->
+                                    { result | openSections = (showSection sectionName == False) :: result.openSections }
+
+                                CloseSectionNode ->
+                                    { result | openSections = List.tail result.openSections |> Maybe.withDefault [] }
+
+                                CommentNode ->
                                     result
-
-                            UnescapedVariableNode variableName ->
-                                if List.all (\isShown -> isShown) result.openSections then
-                                    { result | renderedTemplate = result.renderedTemplate ++ getValue variableName }
-
-                                else
-                                    result
-
-                            EscapedVariableNode variableName ->
-                                if List.all (\isShown -> isShown) result.openSections then
-                                    { result | renderedTemplate = result.renderedTemplate ++ EscapeHtml.escape (getValue variableName) }
-
-                                else
-                                    result
-
-                            OpenSectionNode sectionName ->
-                                { result | openSections = showSection sectionName :: result.openSections }
-
-                            OpenInvertedSectionNode sectionName ->
-                                { result | openSections = (showSection sectionName == False) :: result.openSections }
-
-                            CloseSectionNode ->
-                                { result | openSections = List.tail result.openSections |> Maybe.withDefault [] }
-
-                            CommentNode ->
-                                result
-                    )
-                    { renderedTemplate = "", openSections = [] }
-            ).renderedTemplate
+                        )
+                        { renderedTemplate = "", openSections = [] }
+                ).renderedTemplate
 
         Err _ ->
-            "ERROR parsing template!\n" ++ template
+            Nothing
 
 
 mustacheParser : Parser (List SyntaxNode)
