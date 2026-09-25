@@ -19,6 +19,7 @@ type Node
 type SyntaxNode
     = TextNode Int String
     | VariableNode String
+    | CommentNode
     | OpenSectionNode String
     | CloseSectionNode String
 
@@ -99,6 +100,9 @@ render nodes template =
 
                                 else
                                     result
+
+                            CommentNode ->
+                                result
                     )
                     { renderedTemplate = "", skipUntilSectionClosed = Nothing }
             ).renderedTemplate
@@ -122,7 +126,7 @@ mustacheParser =
                             Parser.Loop (node :: nodes)
                     )
                     |= Parser.getOffset
-                    |= Parser.oneOf [ openSectionParser, closeSectionParser, variableParser, textParser ]
+                    |= Parser.oneOf [ openSectionParser, closeSectionParser, commentParser, variableParser, textParser ]
                 ]
 
         getOffset : SyntaxNode -> Int
@@ -156,6 +160,15 @@ variableParser =
         |. Parser.symbol "{{"
         |. Parser.spaces
         |= nameParser
+        |. Parser.symbol "}}"
+
+
+commentParser : Parser SyntaxNode
+commentParser =
+    Parser.succeed CommentNode
+        |. Parser.symbol "{{!"
+        |. Parser.spaces
+        |. Parser.chompUntil "}}"
         |. Parser.symbol "}}"
 
 
