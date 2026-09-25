@@ -23,7 +23,8 @@ type SyntaxNode
     | UnescapedVariableNode String
     | CommentNode
     | OpenSectionNode String
-    | CloseSectionNode String
+    | OpenInvertedSectionNode String
+    | CloseSectionNode
 
 
 {-| Render a template using a list of variables
@@ -99,7 +100,10 @@ render nodes template =
                             OpenSectionNode sectionName ->
                                 { result | openSections = showSection sectionName :: result.openSections }
 
-                            CloseSectionNode _ ->
+                            OpenInvertedSectionNode sectionName ->
+                                { result | openSections = (showSection sectionName == False) :: result.openSections }
+
+                            CloseSectionNode ->
                                 { result | openSections = List.tail result.openSections |> Maybe.withDefault [] }
 
                             CommentNode ->
@@ -127,7 +131,7 @@ mustacheParser =
                             Parser.Loop (node :: nodes)
                     )
                     |= Parser.getOffset
-                    |= Parser.oneOf [ openSectionParser, closeSectionParser, commentParser, unescapedVariableParser, ampersandVariableParser, escapedVariableParser, textParser ]
+                    |= Parser.oneOf [ openSectionParser, openInvertedSectionParser, closeSectionParser, commentParser, unescapedVariableParser, ampersandVariableParser, escapedVariableParser, textParser ]
                 ]
 
         getOffset : SyntaxNode -> Int
@@ -200,12 +204,21 @@ openSectionParser =
         |. Parser.symbol "}}"
 
 
+openInvertedSectionParser : Parser SyntaxNode
+openInvertedSectionParser =
+    Parser.succeed OpenInvertedSectionNode
+        |. Parser.symbol "{{^"
+        |. Parser.spaces
+        |= nameParser
+        |. Parser.symbol "}}"
+
+
 closeSectionParser : Parser SyntaxNode
 closeSectionParser =
     Parser.succeed CloseSectionNode
         |. Parser.symbol "{{/"
         |. Parser.spaces
-        |= nameParser
+        |. nameParser
         |. Parser.symbol "}}"
 
 
