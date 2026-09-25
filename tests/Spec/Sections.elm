@@ -1,4 +1,4 @@
-module Sections exposing (all)
+module Spec.Sections exposing (all)
 
 import Expect
 import Mustache

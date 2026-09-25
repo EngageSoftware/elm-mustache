@@ -1,4 +1,4 @@
-module Comments exposing (all)
+module Spec.Comments exposing (all)
 
 import Expect
 import Mustache

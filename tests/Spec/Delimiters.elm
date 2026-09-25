@@ -1,4 +1,4 @@
-module Delimiters exposing (all)
+module Spec.Delimiters exposing (all)
 
 import Expect
 import Mustache
