@@ -34,10 +34,10 @@ template =
 evaluatedTemplate : Maybe String
 evaluatedTemplate =
   Mustache.render
-    [ Mustache.Variable "name" "John"
+    [ Mustache.Variable "name" "D'Angelo"
     , Mustache.Section "show" True
     ]
     template
     
-evaluatedTemplate --> Just "Hi, my name is John. Show me!"
+evaluatedTemplate --> Just "Hi, my name is D&#39;Angelo. Show me!"
 ```
